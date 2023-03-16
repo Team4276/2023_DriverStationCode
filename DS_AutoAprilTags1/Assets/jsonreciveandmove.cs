@@ -2,6 +2,8 @@ using UnityEngine;
 using System.Net.Http;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using FRC.NetworkTables;
+using UnityEditor.Experimental.GraphView;
 
 public class jsonreciveandmove : MonoBehaviour
 {
@@ -13,15 +15,32 @@ public class jsonreciveandmove : MonoBehaviour
 
     bool hasEnteredUrl = false; // flag to indicate if user has entered a URL
 
+    readonly public int port = 1735; // default port number
+    readonly public int TeamNum = 4276;
+
+   
+
     void Start()
     {
         guiStyle = new GUIStyle();
         guiStyle.fontSize = 20;
         guiStyle.normal.textColor = Color.black;
+
     }
 
     async void Update()
     {
+        NetworkTableInstance nt1 = NetworkTableInstance.Default;
+        NetworkTable table = nt1.GetTable("PathCorners");
+
+        nt1.StartDSClient();
+        nt1.StartClient();
+        nt1.StartClientTeam(TeamNum, port);
+        nt1.StartServer();
+        Vector3 Rpos = new Vector3((float)table.GetEntry("pitch").GetDouble(0), (float)table.GetEntry("yaw").GetDouble(0), (float)table.GetEntry("roll").GetDouble(0));
+        Debug.Log(Rpos);
+        gameObject.transform.eulerAngles = Rpos;
+
         if (hasEnteredUrl)
         {
             try
@@ -45,10 +64,9 @@ public class jsonreciveandmove : MonoBehaviour
                 float rz = (float)t6r_fs[5];
 
                 Vector3 pos = new Vector3(x, y + 0.2f, z - 2.2f);
-                Vector3 Rpos = new Vector3(rx, ry - 70f, rz);
+                
 
                 transform.position = pos;
-                gameObject.transform.eulerAngles = Rpos;
                 
 
 
@@ -59,6 +77,8 @@ public class jsonreciveandmove : MonoBehaviour
                 Debug.Log("message:");
                 Debug.Log(e.Message);
             }
+
+           
         }
     }
 
@@ -77,6 +97,7 @@ public class jsonreciveandmove : MonoBehaviour
             // if enter key is pressed, format the URL and set the flag to indicate that the user has entered a URL
             apiUrl = FormatApiUrl(apiUrl);
             hasEnteredUrl = true;
+            Debug.Log("yes");
         }
         GUILayout.EndHorizontal();
         GUILayout.EndArea();

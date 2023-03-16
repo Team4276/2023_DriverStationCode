@@ -19,7 +19,7 @@ public class w : MonoBehaviour
         Vector3 parentPosition = parentObject.transform.position;
 
         childObject.transform.position = parentPosition;
-        Debug.Log(transform.position);
+        //Debug.Log(transform.position);
 
     }
 }
