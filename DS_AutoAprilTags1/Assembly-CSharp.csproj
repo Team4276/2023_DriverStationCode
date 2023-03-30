@@ -57,10 +57,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\comms.cs" />
+    <Compile Include="Assets\Pathfinding1.cs" />
     <Compile Include="Assets\NavMeshagentCornors.cs" />
     <Compile Include="Assets\test.cs" />
     <Compile Include="Assets\scri.cs" />
     <Compile Include="Assets\jsonreciveandmove.cs" />
+    <Compile Include="Assets\PathFinding.cs" />
     <Compile Include="Assets\w.cs" />
   </ItemGroup>
   <ItemGroup>

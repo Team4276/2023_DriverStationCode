@@ -1,9 +1,7 @@
 using UnityEngine;
 using System.Net.Http;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using FRC.NetworkTables;
-using UnityEditor.Experimental.GraphView;
 
 public class jsonreciveandmove : MonoBehaviour
 {
@@ -37,8 +35,9 @@ public class jsonreciveandmove : MonoBehaviour
         nt1.StartClient();
         nt1.StartClientTeam(TeamNum, port);
         nt1.StartServer();
+        //gets orintation from the gyro(way more acurate then limelight
         Vector3 Rpos = new Vector3((float)table.GetEntry("pitch").GetDouble(0), (float)table.GetEntry("yaw").GetDouble(0), (float)table.GetEntry("roll").GetDouble(0));
-        Debug.Log(Rpos);
+        //Debug.Log(Rpos);
         gameObject.transform.eulerAngles = Rpos;
 
         if (hasEnteredUrl)
@@ -49,7 +48,8 @@ public class jsonreciveandmove : MonoBehaviour
                 float startTime = Time.realtimeSinceStartup;
                 using HttpResponseMessage response = await client.GetAsync(apiUrl);
                 responseTime = (Time.realtimeSinceStartup - startTime) * 1000; // convert to milliseconds
-
+                
+                //json parse for postion in field space
                 string responseBody = await response.Content.ReadAsStringAsync();
                 Debug.Log(responseBody);
                 JObject jsonObject = JObject.Parse(responseBody);
@@ -59,9 +59,7 @@ public class jsonreciveandmove : MonoBehaviour
                 float x = (float)t6r_fs[0];
                 float z = (float)t6r_fs[1];
                 float y = (float)t6r_fs[2];
-                float rx = (float)t6r_fs[3];
-                float ry = (float)t6r_fs[4];
-                float rz = (float)t6r_fs[5];
+
 
                 Vector3 pos = new Vector3(x, y + 0.2f, z - 2.2f);
                 

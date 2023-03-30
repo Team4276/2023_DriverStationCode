@@ -106,15 +106,15 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 0.6
+    agentRadius: 0.42
     agentHeight: 0.3
     agentSlope: 0
-    agentClimb: 0.2
+    agentClimb: 0.1
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 1
-    cellSize: 0.03
+    cellSize: 0.01
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
@@ -213,7 +213,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 26748601}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.77, y: 0.705, z: -1.56}
+  m_LocalPosition: {x: -0.74, y: 0, z: -4.15}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -667,11 +667,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e14d1f96003d5714b949d2661cdc8702, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e14d1f96003d5714b949d2661cdc8702, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e14d1f96003d5714b949d2661cdc8702, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2414,7 +2414,6 @@ GameObject:
   - component: {fileID: 1400146421}
   - component: {fileID: 1400146422}
   - component: {fileID: 1400146423}
-  - component: {fileID: 1400146424}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -2467,7 +2466,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1400146412}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d22e278f91556e49a5fc6a3245f82a1, type: 3}
   m_Name: 
@@ -2479,13 +2478,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1400146412}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f3ce977b75a5d044cadf6d72a8d345c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destination: {fileID: 26748605}
   pathColor: {r: 1, g: 0, b: 0, a: 1}
+  pointsList: []
 --- !u!114 &1400146423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2493,23 +2492,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1400146412}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2357210dca88f7b4da69e7d0ddcee577, type: 3}
+  m_Script: {fileID: 11500000, guid: 0c421c36a6187d14dabcc814a1422677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1400146424
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1400146412}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1825b16e6531e548b06dea95d86b3de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  pointsList: []
 --- !u!4 &1702078423 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e14d1f96003d5714b949d2661cdc8702, type: 3}
